@@ -1,0 +1,18 @@
+spring:
+    cloud:
+        config:
+            label: master
+            uri: http://localhost:8750
+            name: gate
+            profile: dev
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+
+
+

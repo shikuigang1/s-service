@@ -1,0 +1,11 @@
+spring:
+    application:
+        name: service-config
+    cloud:
+        config:
+            server:
+                git:
+                    uri: https://github.com/shikuigang1/gitServer.git
+
+server:
+    port: 8750 #启动端口https://git.oschina.net/geek_qi/AG-Config.git
