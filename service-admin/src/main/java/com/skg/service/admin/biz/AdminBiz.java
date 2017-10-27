@@ -1,7 +1,7 @@
 package com.skg.service.admin.biz;
 
-import com.skg.service.admin.mapper.UserMapper;
-import com.skg.service.admin.entity.User;
+import com.skg.service.admin.mapper.AdminMapper;
+import com.skg.service.core.model.Admin;
 import com.skg.service.core.util.PhoneFormatCheckUtils;
 
 import com.skg.service.core.biz.BaseBiz;
@@ -12,12 +12,12 @@ import org.springframework.util.StringUtils;
 
 
 @Service
-public class UserBiz extends BaseBiz<UserMapper,User> {
+public class AdminBiz extends BaseBiz<AdminMapper,Admin> {
 
     /*@Autowired
     private UserAuthUtil userAuthUtil;*/
     @Override
-    public void insertSelective(User entity) {
+    public void insertSelective(Admin entity) {
         //String password = new BCryptPasswordEncoder(12).encode(entity.getPassword());
         String password = new BCryptPasswordEncoder().encode(entity.getPassword());//有参数 形式生成 慢
         entity.setPassword(password);
@@ -25,7 +25,7 @@ public class UserBiz extends BaseBiz<UserMapper,User> {
     }
 
     @Override
-    public void updateSelectiveById(User entity) {
+    public void updateSelectiveById(Admin entity) {
 
         if( !StringUtils.isEmpty(entity.getPassword())){
             String password = new BCryptPasswordEncoder().encode(entity.getPassword());
@@ -41,26 +41,25 @@ public class UserBiz extends BaseBiz<UserMapper,User> {
      * @param username
      * @return
      */
-    public User getUserByUsername(String username){
-        User user = new User();
-        user.setUsername(username);
-        return mapper.selectOne(user);
+    public Admin getUserByUsername(String username){
+        Admin admin = new Admin();
+        admin.setUsername(username);
+        return mapper.selectOne(admin);
     }
     /**
      * 通过手机号获取用户信息
      */
-    public User getUserByMobile(String mobile){
-        User user = new User();
+    public Admin getUserByMobile(String mobile){
+        Admin user = new Admin();
         user.setMobile(mobile);
         return mapper.selectOne(user);
     }
 
-    public User getUserByCondition(User user ){
-        if(PhoneFormatCheckUtils.isPhoneLegal(user.getMobile())){
+    public Admin getUserByCondition(Admin user ){
+        if(!StringUtils.isEmpty(user.getMobile()) && PhoneFormatCheckUtils.isPhoneLegal(user.getMobile())){
             return getUserByMobile(user.getMobile());
         }else{
             return getUserByUsername(user.getUsername());
         }
     }
-
 }
