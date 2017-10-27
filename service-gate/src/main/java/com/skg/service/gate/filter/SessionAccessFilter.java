@@ -30,8 +30,8 @@ public class SessionAccessFilter extends ZuulFilter {
     @Value("${gate.ignore.startWith}")
     private String startWith;
 
-    @Value("${zuul.prefix}")
-    private String zuulPrefix;
+    /*@Value("${zuul.prefix}")
+    private String zuulPrefix;*/
 
     @Override
     public String filterType() {
@@ -52,9 +52,19 @@ public class SessionAccessFilter extends ZuulFilter {
     public Object run() {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
-        final String requestUri = request.getRequestURI().substring(zuulPrefix.length());
+       // final String requestUri = request.getRequestURI().substring(zuulPrefix.length());
         final String method = request.getMethod();
+
+        //url 验证是否 需要拦截
+        //System.out.println(requestUri);
+
+        String  access_token = request.getParameter("access_token");
+        System.out.println(request.getRequestURI());
+        System.out.println(access_token);
         System.out.println(request.getSession().getId());
+
+
+
 
         //JedisClusterUtils.getBean();
 

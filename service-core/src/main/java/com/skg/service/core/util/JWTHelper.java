@@ -1,8 +1,6 @@
 package com.skg.service.core.util;
 
-import com.github.wxiaoqi.security.common.constant.CommonConstants;
-import com.github.wxiaoqi.security.common.util.RsaKeyHelper;
-import com.github.wxiaoqi.security.common.util.StringHelper;
+import com.skg.service.core.constant.CommonConstants;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;

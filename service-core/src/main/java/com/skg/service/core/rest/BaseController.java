@@ -1,9 +1,5 @@
 package com.skg.service.core.rest;
 
-/*import com.github.wxiaoqi.security.common.biz.BaseBiz;
-import com.github.wxiaoqi.security.common.msg.ObjectRestResponse;
-import com.github.wxiaoqi.security.common.msg.TableResultResponse;
-import com.github.wxiaoqi.security.common.util.Query;*/
 import com.skg.service.core.biz.BaseBiz;
 import com.skg.service.core.msg.ObjectRestResponse;
 import com.skg.service.core.msg.TableResultResponse;

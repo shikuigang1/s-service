@@ -12,7 +12,7 @@ import java.util.List;
 /**
  *  通过 feign admin-api 中 提供的接口
  */
-@FeignClient(value = "admin-api",configuration = {ServiceFeignInterceptor.class})
+@FeignClient(value = "admin-service",configuration = {ServiceFeignInterceptor.class})
 @RequestMapping("api")
 public interface IUserService {
 

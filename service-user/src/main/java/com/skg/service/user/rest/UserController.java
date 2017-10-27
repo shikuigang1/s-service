@@ -1,14 +1,13 @@
-package com.skg.service.admin.rest;
-
-import com.skg.service.admin.entity.User;
-import com.skg.service.admin.biz.UserBiz;
+package com.skg.service.user.rest;
 
 import com.skg.service.core.exception.InvalidePasswordException;
 import com.skg.service.core.exception.ParameterErrorException;
 import com.skg.service.core.exception.UserNotFoundException;
+import com.skg.service.core.model.User;
 import com.skg.service.core.msg.ObjectRestResponse;
 import com.skg.service.core.rest.BaseController;
 import com.skg.service.core.util.PasswordUtil;
+import com.skg.service.user.biz.UserBiz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
@@ -56,10 +55,11 @@ public class UserController extends BaseController<UserBiz,User> {
     public ResponseEntity<?> loginUser(HttpServletRequest request, User user) throws Exception {
 
         System.out.println(request.getSession().getId());
-        if(StringUtils.isEmpty(user.getMobile()) || StringUtils.isEmpty(user.getPassword())){
+
+        if(StringUtils.isEmpty(user.getUsername()) || StringUtils.isEmpty(user.getPassword())){
             throw new ParameterErrorException("parameter error!");
         }
-        User res = userBiz.getUserByMobile(user.getMobile());
+        User res = userBiz.getUserByCondition(user);
         if(res == null){
             throw new UserNotFoundException("user not find!");
         }

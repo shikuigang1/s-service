@@ -7,19 +7,23 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="service-admin" />
+        <module name="service-auth" />
         <module name="service-config" />
         <module name="service-core" />
         <module name="service-gate" />
         <module name="service-regcenter" />
+        <module name="service-user" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="s-service" target="1.6" />
       <module name="service-admin" target="1.8" />
+      <module name="service-auth" target="1.8" />
       <module name="service-config" target="1.6" />
       <module name="service-core" target="1.8" />
       <module name="service-gate" target="1.8" />
       <module name="service-regcenter" target="1.6" />
+      <module name="service-user" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

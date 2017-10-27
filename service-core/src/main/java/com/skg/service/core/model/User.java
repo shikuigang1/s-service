@@ -1,6 +1,7 @@
-package com.skg.service.admin.entity;
+package com.skg.service.core.model;
 
-import javax.persistence.*;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Table(name = "t_user")
 public class User {
